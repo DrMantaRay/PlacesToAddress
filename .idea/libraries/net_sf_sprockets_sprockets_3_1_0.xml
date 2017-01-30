@@ -1,0 +1,22 @@
+<component name="libraryTable">
+  <library name="net.sf.sprockets:sprockets:3.1.0" type="repository">
+    <properties maven-id="net.sf.sprockets:sprockets:3.1.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/sprockets-3.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsr305-3.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/gson-2.6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guava-19.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/okhttp-2.7.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/okio-1.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/okhttp-urlconnection-2.7.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-collections-3.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-configuration-1.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-lang-2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-primitives-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/value-2.1.14.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
