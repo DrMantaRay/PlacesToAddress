@@ -28,7 +28,7 @@ public class PlaceToAddress {
         }
 
     }
-    public void exportCsv(String filename) {
+    private void exportCsv(String filename) {
         try {
             CSVWriter writer= new CSVWriter(new FileWriter(filename), ',');
             writer.writeAll(inFile);
