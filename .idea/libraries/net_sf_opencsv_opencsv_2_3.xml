@@ -3,7 +3,10 @@
     <properties maven-id="net.sf.opencsv:opencsv:2.3" />
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/opencsv-2.3.jar!/" />
+<<<<<<< HEAD
       <root url="jar://$PROJECT_DIR$/lib/opencsv-2.3.jar!/" />
+=======
+>>>>>>> origin/master
     </CLASSES>
     <JAVADOC />
     <SOURCES />

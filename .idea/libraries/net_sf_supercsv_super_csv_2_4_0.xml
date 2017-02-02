@@ -3,7 +3,10 @@
     <properties maven-id="net.sf.supercsv:super-csv:2.4.0" />
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/super-csv-2.4.0.jar!/" />
+<<<<<<< HEAD
       <root url="jar://$PROJECT_DIR$/lib/super-csv-2.4.0.jar!/" />
+=======
+>>>>>>> origin/master
     </CLASSES>
     <JAVADOC />
     <SOURCES />

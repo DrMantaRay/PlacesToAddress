@@ -1,7 +1,10 @@
 
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 import se.walkercrou.places.GooglePlaces;
 import se.walkercrou.places.Param;
 import se.walkercrou.places.Place;
@@ -15,8 +18,11 @@ import java.util.List;
  * Created by pchen on 1/30/2017.
  */
 public class PlaceToAddress {
+<<<<<<< HEAD
     private String apiKey="";
     public String getApiKey(){return apiKey;}
+=======
+>>>>>>> origin/master
     private List<String[]> inFile;
     private void loadCsv(String filename){
         try {
@@ -41,7 +47,11 @@ public class PlaceToAddress {
 
     }
     public static void main(String[] args) {
+<<<<<<< HEAD
         GooglePlaces client= new GooglePlaces(new PlaceToAddress().getApiKey());
+=======
+        GooglePlaces client= new GooglePlaces("AIzaSyDL1IpxsgU4d2u5VRHSPxognEhqcm-0ah4");
+>>>>>>> origin/master
         PlaceToAddress placelist = new PlaceToAddress();
         placelist.loadCsv("/home/patrick/PlacesToAddress/src/FacilityContacts.csv");
 
