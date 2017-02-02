@@ -1,44 +1,64 @@
+
+import au.com.bytecode.opencsv.CSVReader;
+import au.com.bytecode.opencsv.CSVWriter;
+
 import se.walkercrou.places.GooglePlaces;
+import se.walkercrou.places.Param;
 import se.walkercrou.places.Place;
-import java.io.*;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
-
 /**
  * Created by pchen on 1/30/2017.
  */
 public class PlaceToAddress {
-    public static void main(String[] args) {
-        GooglePlaces client= new GooglePlaces("AIzaSyDeziui3HYOmTYeYAuZ3uULCqjLd1afk-E");
-        List<Place> places = client.getPlacesByQuery("library", GooglePlaces.MAXIMUM_RESULTS);
-        int i=0;
-        for (Place place : places) {
-            System.out.println(place.getName());
-            i++;
-            if (i>20) {break;}
-          /*  if (place.getName().equals("Empire State Building")) {
-                empireStateBuilding = place;
-                break;
-            } */
-
+    private String apiKey="";
+    public String getApiKey(){return apiKey;}
+    private List<String[]> inFile;
+    private void loadCsv(String filename){
+        try {
+            CSVReader reader = new CSVReader(new FileReader(filename));
+            try {
+                inFile = reader.readAll();
+            }catch(IOException e) {
+                e.printStackTrace();
+            }
+        } catch(FileNotFoundException e){
+            e.printStackTrace();
         }
-/*
-        if (empireStateBuilding != null) {
-            Place detailedEmpireStateBuilding = empireStateBuilding.getDetails(); // sends a GET request for more details
-            // Just an example of the amount of information at your disposal:
-           // System.out.println("ID: " + detailedEmpireStateBuilding.getId());
-            System.out.println("Name: " + detailedEmpireStateBuilding.getName());
-            System.out.println("Phone: " + detailedEmpireStateBuilding.getPhoneNumber());
-            System.out.println("International Phone: " + empireStateBuilding.getInternationalPhoneNumber());
-            System.out.println("Website: " + detailedEmpireStateBuilding.getWebsite());
-            System.out.println("Always Opened: " + detailedEmpireStateBuilding.isAlwaysOpened());
-            System.out.println("Status: " + detailedEmpireStateBuilding.getStatus());
-            System.out.println("Google Place URL: " + detailedEmpireStateBuilding.getGoogleUrl());
-            System.out.println("Price: " + detailedEmpireStateBuilding.getPrice());
-            System.out.println("Address: " + detailedEmpireStateBuilding.getAddress());
-            System.out.println("Vicinity: " + detailedEmpireStateBuilding.getVicinity());
-            System.out.println("Reviews: " + detailedEmpireStateBuilding.getReviews().size());
-            System.out.println("Hours:\n " + detailedEmpireStateBuilding.getHours());
-        } */
+
+    }
+    private void exportCsv(String filename) {
+        try {
+            CSVWriter writer= new CSVWriter(new FileWriter(filename), ',');
+            writer.writeAll(inFile);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public static void main(String[] args) {
+        GooglePlaces client= new GooglePlaces(new PlaceToAddress().getApiKey());
+        PlaceToAddress placelist = new PlaceToAddress();
+        placelist.loadCsv("/home/patrick/PlacesToAddress/src/FacilityContacts.csv");
+
+        for (String[] stringlists : placelist.inFile.subList(1, placelist.inFile.size())) {
+            if (!stringlists[2].equals("")) {
+                try {
+                    System.out.println(stringlists[2]);
+                    List<Place> places = client.getPlacesByQuery( "Idaho" + stringlists[2], GooglePlaces.DEFAULT_RESULTS, Param.name("gl").value("US"),Param.name("location").value("ID"));
+                    stringlists[6] = places.get(0).getAddress();
+                    System.out.println(stringlists[6]);
+                } catch(Exception e ) {
+                    e.printStackTrace();
+                    stringlists[6] = "Address Not Found";
+                }
+            }
+        }
+        placelist.exportCsv("/home/patrick/PlacesToAddress/src/FacilityContactsWithAddress.csv");
+
     }
 }
